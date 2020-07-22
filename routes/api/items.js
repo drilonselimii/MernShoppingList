@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 const Item = require('../../models/Item');
 
-router.get('/api/items',(req, res) => {
+router.get('/',(req, res) => {
     Item.find()
     .sort({date: -1})
     .then(items => res.json(items))
