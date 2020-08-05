@@ -3,12 +3,16 @@ const router = require('express').Router();
 
 const Item = require('../../models/Item');
 
-router.get('/',(req, res) => {
-    Item.find()
-    .sort({date: -1})
-    .then(items => res.json(items))
-});
-
+router.get('/', async (req, res) => {
+    try {
+      const items = await Item.find();
+      if (!items) throw Error('No items');
+  
+      res.status(200).json(items);
+    } catch (e) {
+      res.status(400).json({ msg: e.message });
+    }
+  });
 
 router.post('/',(req, res) => {
     const newItem = new Item({
