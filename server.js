@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
-const errorEx = require('error-ex');
 
 const items = require('./routes/api/items');
 
@@ -31,6 +30,6 @@ mongoose
 
    }
 
-   const port = process.env.PORT || 5000;
+   const port = process.env.PORT || 8000;
 
    app.listen(port, () => console.log(`Server started on port ${port}`));
