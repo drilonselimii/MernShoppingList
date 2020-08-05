@@ -14,21 +14,20 @@ app.use(bodyParser.json());
 const db = require('./config/keys').mongoURI;
 
 mongoose
-   .connect(db, { useNewUrlParser: true , useUnifiedTopology: true })
+   .connect(db, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
    .then(() => console.log('MongoDb Connected...'))
    .catch(err => console.log(err));
 
    app.use('/api/items', items);
 
    if (process.env.NODE_ENV === 'production') {
-
+      // Set static folder
       app.use(express.static('client/build'));
-
-      app.get('*', function( req, res)  {
-         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    
+      app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
       });
-
-   }
+    }
 
    const port = process.env.PORT || 5000;
 
