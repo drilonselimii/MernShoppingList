@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
+const errorEx = require('error-ex');
 
 const items = require('./routes/api/items');
 
