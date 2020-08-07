@@ -13,14 +13,10 @@ app.use(bodyParser.json());
 
 const db = require('./config/keys').mongoURI;
 
-const dbCheck = mongoose
-      .connect(db, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true
-      })
-      .then(() => console.log(dbCheck, '---db check----'))
-      .catch(err => console.log(err));
+mongoose
+   .connect(db, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
+   .then(() => console.log('MongoDb Connected...'))
+   .catch(err => console.log(err));
 
    app.use('/api/items', items);
 
