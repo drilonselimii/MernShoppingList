@@ -14,11 +14,11 @@ app.use(bodyParser.json());
 const db = require('./config/keys').mongoURI;
 
 mongoose
-   .connect(db, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
+   .connect(process.env.MONGODB_URI || db, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
    .then(() => console.log('MongoDb Connected...'))
    .catch(err => console.log(err));
 
-   app.use('/api/items', require("./routes/api/items"));
+   app.use('/api/items', items);
 
    if (process.env.NODE_ENV === 'production') {
       // Set static folder
