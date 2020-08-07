@@ -3,18 +3,19 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
+const cors = require("cors");
 
 const items = require('./routes/api/items');
 
 const app = express();
-
+app.use(cors());
 //Bodyparser middleware
 app.use(bodyParser.json());
 
 const db = require('./config/keys').mongoURI;
 
 mongoose
-   .connect(process.env.MONGODB_URI || db, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
+   .connect(db, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
    .then(() => console.log('MongoDb Connected...'))
    .catch(err => console.log(err));
 
