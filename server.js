@@ -18,7 +18,7 @@ mongoose
    .then(() => console.log('MongoDb Connected...'))
    .catch(err => console.log(err));
 
-   app.use('/api/items', items);
+   app.use('/api/items', require("./routes/api/items"));
 
    if (process.env.NODE_ENV === 'production') {
       // Set static folder
