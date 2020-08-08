@@ -1,8 +1,7 @@
-const express = require('express');
-const router = require('express').Router();
+import { Router } from 'express';
+import Item from '../../models/Item';
 const router = Router();
 
-const Item = require('../../models/Item');
 
 router.get('/',(req, res) => {
     Item.find()
