@@ -14,13 +14,13 @@ app.use(bodyParser.json());
 const db = require('./config/keys').mongoURI;
 
 mongoose
-   .connect(db, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
+   .connect(db || 'mongodb://localhost/5000', { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
    .then(() => console.log('MongoDb Connected...'))
    .catch(err => console.log(err));
 
    app.use('/api/items', items);
 
-   if (process.env.NODE_ENV == 'production') {
+   if (process.env.NODE_ENV === 'production') {
       // Set static folder
       app.use(express.static('client/build'));
     
