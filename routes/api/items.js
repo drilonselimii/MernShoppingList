@@ -1,7 +1,7 @@
 const express = require('express');
 const router = require('express').Router();
 
-const Item = require('../client/models/Item');
+const Item = require('../../models/Item');
 
 router.get('/',(req, res) => {
     Item.find()
