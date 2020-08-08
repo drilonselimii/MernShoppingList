@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import auth from '../../middleware/auth';
+
 // Item Model
 import Item from '../../models/Item';
 
