@@ -12,9 +12,10 @@ const app = express();
 app.use(bodyParser.json());
 
 const db = require('./config/keys').mongoURI;
+let url = process.env.db || 'mongodb://localhost/5000';
 
 mongoose
-   .connect(db || 'mongodb://localhost/5000', { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
+   .connect(url, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
    .then(() => console.log('MongoDb Connected...'))
    .catch(err => console.log(err));
 
