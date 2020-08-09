@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 const db = require('./config/keys').mongoURI;
 
 mongoose
-   .connect(db, 'mern_shopping', { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
+   .connect(db, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
    .then(() => console.log('MongoDb Connected...'))
    .catch(err => console.log(err));
 
