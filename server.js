@@ -10,7 +10,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const db = require('/config/keys').mongoURI;
+const db = require('./config/keys').ATLAS_URI;
 
 mongoose
    .connect(db, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
