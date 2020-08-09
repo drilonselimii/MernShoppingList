@@ -8,11 +8,9 @@ const items = require('./routes/api/items');
 
 const app = express();
 
-app.use("./items", items);
-//Bodyparser middleware
 app.use(bodyParser.json());
 
-const db = require('./config/keys').mongoURI;
+const db = require('/config/keys').mongoURI;
 
 mongoose
    .connect(db, { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true })
