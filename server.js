@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
 
-const items = require('./routes/api/items');
 
 const app = express();
 
@@ -17,7 +16,8 @@ mongoose
    .then(() => console.log('MongoDb Connected...'))
    .catch(err => console.log(err));
 
-   app.use('/api/items', items);
+   app.use('/api/items', require('./routes/api/items'));
+   app.use('/api/users', require('./routes/api/users'));
 
    if (process.env.NODE_ENV === 'production') {
       // Set static folder
